@@ -628,18 +628,20 @@ void USART3_IRQHandler(void)
 		static int rx_index = 0;
 
 		char rx = (char)USART_ReceiveData(USART3);
-		if ((rx_buffer[rx_index-1] == '\n') && (rx == '\r')) // Is this an end-of-line condition, either will suffice?
+		if ((rx_buffer[rx_index-1] == '\r') && (rx == '\n')) // Is this an end-of-line condition, either will suffice?
 		{
 			if (rx_index != 0) // Line has some content
 			{
+				char buffer[30] = {0};
+
 				memcpy((void *)line_buffer, rx_buffer, rx_index); // Copy to static line buffer from dynamic receive buffer
 				line_buffer[rx_index] = 0; // Add terminating NUL
 				line_buffer[rx_index-1] = '\r'; // Add terminating NUL
 				line_valid = 1; // flag new line valid for processing
 				rx_index = 0; // Reset content pointer
-				//sprintf(buffer,"%i \n\r",tempo);
-				//OutString(USART2,&buffer);
-				OutString(USART3,&line_buffer);
+				sprintf(buffer,"%s",line_buffer);
+				OutString(USART2,&buffer);
+				//OutString(USART3,&line_buffer);
 			}
 		}
 		else

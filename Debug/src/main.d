@@ -1,4 +1,5 @@
 src/main.o: ../src/main.c \
+ C:/Users/Saldory/workspace/ESP8266/inc/configurations.h \
  C:/Users/Saldory/workspace/ESP8266/CMSIS/device/stm32f10x.h \
  C:/Users/Saldory/workspace/ESP8266/CMSIS/core/core_cm3.h \
  C:/Users/Saldory/workspace/ESP8266/CMSIS/core/core_cmInstr.h \
@@ -29,6 +30,8 @@ src/main.o: ../src/main.c \
  C:/Users/Saldory/workspace/ESP8266/StdPeriph_Driver/inc/stm32f10x_wwdg.h \
  C:/Users/Saldory/workspace/ESP8266/StdPeriph_Driver/inc/misc.h \
  C:/Users/Saldory/workspace/ESP8266/Utilities/STM32F1xx-Nucleo/stm32f1xx_nucleo.h
+
+C:/Users/Saldory/workspace/ESP8266/inc/configurations.h:
 
 C:/Users/Saldory/workspace/ESP8266/CMSIS/device/stm32f10x.h:
 
