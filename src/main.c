@@ -15,7 +15,8 @@ static void rxPollingUSART2(void);
 //uint16_t *rxData;
 
 
-volatile char line_buffer[LINEMAX + 1]; // Holding buffer with space for terminating NUL
+volatile char line_buffer_Usart3[LINEMAX + 1]; // Holding buffer with space for terminating NUL
+volatile char line_buffer_Usart2[LINEMAX + 1]; // Holding buffer with space for terminating NUL
 volatile int line_valid = 0;
 
 int main(void)

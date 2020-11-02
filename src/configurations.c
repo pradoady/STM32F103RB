@@ -170,5 +170,9 @@ static void configInterruptUSART(void)
 
 	NVIC_Init(&NVIC_InitStructure1);
 	USART_ITConfig(USART3, USART_IT_RXNE, ENABLE);
+
+	NVIC_InitStructure1.NVIC_IRQChannel = USART2_IRQn;
+	NVIC_Init(&NVIC_InitStructure1);
+	USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
 }
 

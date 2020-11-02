@@ -9,7 +9,8 @@
 #include "stm32f1xx_it.h"
 //#include "communication.h"
 
-extern volatile char line_buffer[LINEMAX + 1]; // Holding buffer with space for terminating NUL
+extern volatile char line_buffer_Usart3[LINEMAX + 1]; // Holding buffer with space for terminating NUL
+extern volatile char line_buffer_Usart2[LINEMAX + 1]; // Holding buffer with space for terminating NUL
 extern volatile int line_valid;
 
 uint16_t *rxData;
@@ -611,6 +612,37 @@ void USART1_IRQHandler(void)
 *******************************************************************************/
 void USART2_IRQHandler(void)
 {
+	if (USART_GetITStatus(USART2, USART_IT_RXNE) == SET)
+		{
+			static char rx_buffer[LINEMAX];   // Local holding buffer to build line
+			static int rx_index = 0;
+
+			char rx = (char)USART_ReceiveData(USART2);
+			if ((rx_buffer[rx_index-1] == '\r') && (rx == '\n')) // Is this an end-of-line condition, either will suffice?
+			{
+				if (rx_index != 0) // Line has some content
+				{
+					char buffer[30] = {0};
+
+					memcpy((void *)line_buffer_Usart2, rx_buffer, rx_index); // Copy to static line buffer from dynamic receive buffer
+					line_buffer_Usart2[rx_index] = 0; // Add terminating NUL
+					line_buffer_Usart2[rx_index-1] = '\r'; // Add terminating NUL
+					line_valid = 1; // flag new line valid for processing
+					rx_index = 0; // Reset content pointer
+					sprintf(buffer,"%s",line_buffer_Usart2);
+					OutString(USART3,&buffer);
+					//OutString(USART3,&line_buffer);
+				}
+			}
+			else
+			{
+				if ((rx == '$') || (rx_index == LINEMAX)) // If resync or overflows pull back to start
+					rx_index = 0;
+				rx_buffer[rx_index++] = rx; // Copy to buffer and increment
+			}
+		}
+
+		USART_ClearITPendingBit(USART2, USART_IT_RXNE);
 }
 
 /*******************************************************************************
@@ -634,12 +666,12 @@ void USART3_IRQHandler(void)
 			{
 				char buffer[30] = {0};
 
-				memcpy((void *)line_buffer, rx_buffer, rx_index); // Copy to static line buffer from dynamic receive buffer
-				line_buffer[rx_index] = 0; // Add terminating NUL
-				line_buffer[rx_index-1] = '\r'; // Add terminating NUL
+				memcpy((void *)line_buffer_Usart3, rx_buffer, rx_index); // Copy to static line buffer from dynamic receive buffer
+				line_buffer_Usart3[rx_index] = 0; // Add terminating NUL
+				line_buffer_Usart3[rx_index-1] = '\r'; // Add terminating NUL
 				line_valid = 1; // flag new line valid for processing
 				rx_index = 0; // Reset content pointer
-				sprintf(buffer,"%s",line_buffer);
+				sprintf(buffer,"%s",line_buffer_Usart3);
 				OutString(USART2,&buffer);
 				//OutString(USART3,&line_buffer);
 			}
