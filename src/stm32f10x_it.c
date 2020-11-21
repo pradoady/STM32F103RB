@@ -12,6 +12,12 @@
 extern volatile char line_buffer_Usart3[LINEMAX + 1]; // Holding buffer with space for terminating NUL
 extern volatile char line_buffer_Usart2[LINEMAX + 1]; // Holding buffer with space for terminating NUL
 extern volatile int line_valid;
+extern volatile int iCounter100mSec;
+extern volatile int iCounter30mSec;
+extern int bCounter100mSec;
+extern int bCounter30mSec;
+extern int b5Sec;
+extern uint16_t iSecCounter;
 
 uint16_t *rxData;
 
@@ -478,41 +484,46 @@ void TIM2_IRQHandler(void)
 *******************************************************************************/
 void TIM3_IRQHandler(void)
 {
-	/*TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
+//	char buffer[30];
+	static uint16_t imSecCounter = 0;
+	TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
 
+	imSecCounter++;
+	iCounter100mSec++;
+	iCounter30mSec++;
 
-	i50ms_Counter++;
-
-  static uint16_t iCounterMseg =0;
-	static uint16_t iCounterSeg = 0;
-	static uint16_t iCounter5seg = 0;
-
-	iCounterMseg++;
-	iCounterSeg++;
-
-	if(iCounterMseg > 50)
+	if (30 < iCounter30mSec)
 	{
-
-//		b100mSec = 1;
-		iCounterMseg = 0;
-		ADC_SoftwareStartConvCmd(ADC1, ENABLE);
-	}
-	if (iCounterSeg >1000)
-	{
-		iCounter5seg++;
-		iCounterSeg =0;
-	}
-	if (iCounter5seg>5)
-	{
-		b5seg = 1;
+		bCounter30mSec = TRUE;
+		iCounter30mSec = 0;
 	}
 
-	if (i50ms_Counter > 50)
+	if (100 < iCounter100mSec)
 	{
-		b50ms_Counter = TRUE;
+		bCounter100mSec = TRUE;
+		iCounter100mSec = 0;
 	}
 
-  TIM_ClearFlag(TIM3,TIM_FLAG_Update); */
+	if (1000 < imSecCounter)
+	{
+		imSecCounter = 0;
+		iSecCounter++;
+		//sprintf(buffer,"Test: %i \n\r",iSecCounter);
+		//OutString(USART2,&buffer);
+		GPIOA->ODR ^= GPIO_Pin_5;
+	}
+
+	if (2 < iSecCounter)
+	{
+		b5Sec =TRUE;
+		iSecCounter = 0;
+	}
+
+
+
+
+
+	TIM_ClearFlag(TIM3,TIM_FLAG_Update);
 }
 
 /*******************************************************************************
