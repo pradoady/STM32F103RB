@@ -8,6 +8,7 @@
   ******************************************************************************
 */
 #include "configurations.h"
+#include "sensor.h"
 
 
 
@@ -39,100 +40,21 @@ int main(void)
 	configuration();
 
 
-
 	for(;;)
 	{
 		char buffer[100];
-		/*for (uint32_t i=0; i<0x000FFFFF; i++)
-		{
-			GPIO_WriteBit(GPIOA,GPIO_Pin_5,Bit_SET);
-		}
-		sprintf(buffer,"%i \n\r",tempo);
-		OutString(USART2,&buffer);
-		//OutString(USART3,&buffer);
-		tempo++;
-		for (uint32_t i=0; i<0x000FFFFF; i++)
-		{
-			GPIO_WriteBit(GPIOA,GPIO_Pin_5,Bit_RESET);
-		}
-		sprintf(buffer,"%i \n\r",tempo);
-		OutString(USART2,&buffer);
-		tempo++;*/
-
-		/*while(GPIO_ReadInputDataBit(I2C_GPIO,I2C_PIN_SDA) == RESET)
-		{
-			static int i =0;
-			if(i++ > 10)
-			{
-				i =0;
-				break;
-			}
-			GPIO_WriteBit(I2C_GPIO,I2C_PIN_SDA, 0);
-			for (uint32_t i=0; i<0x0FFF; i++)
-			{
-			}
-			GPIO_WriteBit(I2C_GPIO,I2C_PIN_SDA, 1);
-			for (uint32_t i=0; i<0x0FFF; i++)
-			{
-			}
-		}*/
+	
 		if (TRUE == b5Sec)
 		{
-			sprintf(buffer,"I2C START \n\r");
+			float temperature = 0;
+			float humedad = 0;
+			temperature = DRV_TEMP_Read();
+			humedad = DRV_HUM_Read();
+			sprintf(buffer,"Temperature %.3f C Humedade:  %.3f %%\n\r",temperature,humedad);
 			OutString(USART2,&buffer);
-			i2c_write(SLAVE_ADDRESS,0xF3);
-			sprintf(buffer,"I2C WRITE OK \n\r");
-			OutString(USART2,&buffer);
-
-			delay100mSec();
-
-			sprintf(buffer,"I2C read start \n\r");
-			OutString(USART2,&buffer);
-			i2c_read(SLAVE_ADDRESS,&data);
-
-			sprintf(buffer,"I2C read ok: %i %i\n\r",data[0],data[1]);
-			OutString(USART2,&buffer);
-
-			unsigned int temperatureRaw = (data[0] << 8 ) | data[1];
-			float temperature = ((175.72*temperatureRaw)/65536)-46.85;
-			sprintf(buffer,"Temperature %f\n\r",temperature);
-			OutString(USART2,&buffer);
-
 			b5Sec = FALSE;
 			iSecCounter = 0;
 		}
-		if (TRUE == bI2C_EVENT_MASTER_BYTE_RECEIVED)
-		{
-			bI2C_EVENT_MASTER_BYTE_RECEIVED = FALSE;
-			sprintf(buffer,"I2C FAIL ON I2C_EVENT_MASTER_BYTE_RECEIVED \n\r");
-			OutString(USART2,&buffer);
-		}
-		if( TRUE == bI2C_EVENT_MASTER_BYTE_TRANSMITTED)
-		{
-			bI2C_EVENT_MASTER_BYTE_TRANSMITTED = FALSE;
-			sprintf(buffer,"I2C FAIL ON bI2C_EVENT_MASTER_BYTE_TRANSMITTED \n\r");
-			OutString(USART2,&buffer);
-		}
-		if (TRUE == bI2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED)
-		{
-			bI2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED = FALSE;
-			sprintf(buffer,"I2C FAIL ON bI2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED \n\r");
-			OutString(USART2,&buffer);
-		}
-		if (TRUE == bI2C_EVENT_MASTER_RECEIVER_MODE_SELECTED)
-		{
-			bI2C_EVENT_MASTER_RECEIVER_MODE_SELECTED = FALSE;
-			sprintf(buffer,"I2C FAIL ON I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED \n\r");
-			OutString(USART2,&buffer);
-		}
-
-		if (TRUE == (bI2C_EVENT_MASTER_BYTE_RECEIVED || bI2C_EVENT_MASTER_BYTE_TRANSMITTED
-				|| bI2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED || bI2C_EVENT_MASTER_RECEIVER_MODE_SELECTED))
-		{
-			I2C_DeInit(I2Cx);
-			I2C_CONFIG();
-		}
-
 	}
 }
 

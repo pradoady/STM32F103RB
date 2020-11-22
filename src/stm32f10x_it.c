@@ -18,6 +18,7 @@ extern int bCounter100mSec;
 extern int bCounter30mSec;
 extern int b5Sec;
 extern uint16_t iSecCounter;
+volatile uint32_t delayTimer;
 
 uint16_t *rxData;
 
@@ -492,6 +493,10 @@ void TIM3_IRQHandler(void)
 	iCounter100mSec++;
 	iCounter30mSec++;
 
+	if (delayTimer > 0)
+	{
+		delayTimer --;
+	}
 	if (30 < iCounter30mSec)
 	{
 		bCounter30mSec = TRUE;
@@ -513,7 +518,7 @@ void TIM3_IRQHandler(void)
 		GPIOA->ODR ^= GPIO_Pin_5;
 	}
 
-	if (2 < iSecCounter)
+	if (1 < iSecCounter)
 	{
 		b5Sec =TRUE;
 		iSecCounter = 0;
