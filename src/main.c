@@ -48,10 +48,9 @@ int main(void)
 		{
 			float temperature = 0;
 			float humedad = 0;
-			temperature = DRV_TEMP_Read();
-			humedad = DRV_HUM_Read();
-			sprintf(buffer,"Temperature %.3f C Humedade:  %.3f %%\n\r",temperature,humedad);
-			OutString(USART2,&buffer);
+			temperature = Sensor_TEMP_Read();
+			humedad = Sensor_HUM_Read();
+			printDebug(buffer,"Temperature %.3f C Humedade:  %.3f %%\n\r",temperature,humedad);
 			b5Sec = FALSE;
 			iSecCounter = 0;
 		}

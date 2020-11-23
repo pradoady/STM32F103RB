@@ -24,7 +24,6 @@ void OutString(USART_TypeDef *USARTx,char *s);
 #define TRUE 	1
 #define FALSE	0
 
-
 #ifdef DEBUG
 /**
  * This macro will print on USART2.

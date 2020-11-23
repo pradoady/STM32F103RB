@@ -203,3 +203,75 @@ float Sensor_HUM_Read()
 	// return the actual value according to the formula in the doc.
 	return (raw_value * 125.0 / 65536.0) - 6.0;
 }
+
+
+void Sensor_unlockBusyFlag(void)
+{
+	I2C_InitTypeDef I2C_InitStruct;
+	GPIO_InitTypeDef GPIO_InitStruct;
+
+	I2C_Cmd(I2Cx, DISABLE);
+
+	GPIO_InitStruct.GPIO_Pin = I2C_PIN_SCL | I2C_PIN_SDA;
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_OD;
+	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(I2C_GPIO, &GPIO_InitStruct);
+
+	GPIO_Write(I2C_GPIO,HighLvl_SDA_SCL_I2C);
+
+	if (Bit_SET == GPIO_ReadInputDataBit(I2C_GPIO,I2C_PIN_SCL) )
+	{
+		//if (Bit_SET == GPIO_ReadInputDataBit(I2C_GPIO,I2C_PIN_SDA))
+		{
+			GPIO_InitStruct.GPIO_Pin = I2C_PIN_SDA;
+			GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_OD;
+			GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+			GPIO_Init(I2C_GPIO, &GPIO_InitStruct);
+
+			GPIO_Write(I2C_GPIO,LowLvl_SDA_I2C);
+
+			if (Bit_RESET == GPIO_ReadInputDataBit(I2C_GPIO,I2C_PIN_SDA))
+			{
+				GPIO_InitStruct.GPIO_Pin = I2C_PIN_SCL;
+				GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_OD;
+				GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+				GPIO_Init(I2C_GPIO, &GPIO_InitStruct);
+
+				GPIO_Write(I2C_GPIO,LowLvl_SCL_I2C);
+
+				if (Bit_RESET == GPIO_ReadInputDataBit(I2C_GPIO,I2C_PIN_SCL))
+				{
+					GPIO_InitStruct.GPIO_Pin = I2C_PIN_SCL;
+					GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_OD;
+					GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+					GPIO_Init(I2C_GPIO, &GPIO_InitStruct);
+
+					GPIO_Write(I2C_GPIO,HighLvl_SCL_I2C);
+
+					if (Bit_SET == GPIO_ReadInputDataBit(I2C_GPIO,I2C_PIN_SCL))
+					{
+						GPIO_InitStruct.GPIO_Pin = I2C_PIN_SDA;
+						GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_OD;
+						GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+						GPIO_Init(I2C_GPIO, &GPIO_InitStruct);
+
+						GPIO_Write(I2C_GPIO,HighLvl_SDA_SCL_I2C);
+
+						if (Bit_SET == GPIO_ReadInputDataBit(I2C_GPIO,I2C_PIN_SDA))
+						{
+							GPIO_InitStruct.GPIO_Pin = I2C_PIN_SCL | I2C_PIN_SDA;
+							GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_OD;
+							GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+							GPIO_Init(I2C_GPIO, &GPIO_InitStruct);
+
+							I2C_SoftwareResetCmd(I2Cx,ENABLE);
+							I2C_SoftwareResetCmd(I2Cx,DISABLE);
+
+							I2C_Cmd(I2Cx, ENABLE);
+						}
+					}
+				}
+			}
+		}
+	}
+}

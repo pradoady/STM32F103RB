@@ -13,6 +13,7 @@ void Sensor_Init(void);
 void Sensor_TEMP_Deinit(void);
 float Sensor_TEMP_Read();
 float Sensor_HUM_Read();
+void Sensor_unlockBusyFlag(void);
 
 /*
  * I2C Defines
