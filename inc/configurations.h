@@ -29,7 +29,10 @@ void OutString(USART_TypeDef *USARTx,char *s);
 /**
  * This macro will print on USART2.
  * The (...) parameters should be as you were using the 
- * sprintf function.
+ * sprintf function...
+ * 
+ * for example:
+ * printDebug(YourBuffer,"This is the %i Test",v1);
  */ 
 #define printDebug(buffer,...) do{\
                                 sprintf(buffer,__VA_ARGS__);\
