@@ -42,7 +42,7 @@ void configuration(void)
 	configInterruptUSART();
 	configurationTimer();
 	configurationInterruptTim3();
-	I2C_CONFIG();
+	Sensor_Init();
 	printClockInfo();
 }
 
@@ -194,32 +194,6 @@ static void configInterruptUSART(void)
 	USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
 }
 
-void I2C_CONFIG(void)
-{
-	I2C_InitTypeDef I2C_InitStruct;
-	GPIO_InitTypeDef GPIO_InitStruct;
-
-	I2C_DeInit(I2Cx);
-
-	RCC_APB1PeriphClockCmd(I2Cx_RCC, ENABLE);
-
-	I2C_InitStruct.I2C_ClockSpeed = 100000;
-	I2C_InitStruct.I2C_Mode = I2C_Mode_I2C;
-	I2C_InitStruct.I2C_DutyCycle = I2C_DutyCycle_2;
-	I2C_InitStruct.I2C_OwnAddress1 = 0x00;
-	I2C_InitStruct.I2C_Ack = I2C_Ack_Enable;
-	I2C_InitStruct.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit;
-	I2C_Init(I2Cx, &I2C_InitStruct);
-	I2C_Cmd(I2Cx, ENABLE);
-
-	GPIO_PinRemapConfig(GPIO_Remap_I2C1,ENABLE);
-
-	GPIO_InitStruct.GPIO_Pin = I2C_PIN_SCL | I2C_PIN_SDA;
-	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_OD;
-	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(I2C_GPIO, &GPIO_InitStruct);
-
-}
 
 void i2c_start()
 {

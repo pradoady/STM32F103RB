@@ -17,7 +17,6 @@ static uint8_t Sensor_read_ack(I2C_TypeDef* I2C);
 static uint8_t Sensor_read_nack(I2C_TypeDef* I2C);
 static void Sensor_stop(I2C_TypeDef* I2C);
 
-static float temperature;
 
 /* This function issues a start condition and
  * transmits the slave address + R/W bit
@@ -108,13 +107,41 @@ static void Sensor_stop(I2C_TypeDef* I2C){
  *  Global Functions.
  * 
  */
-
-void Sensor_TEMP_Deinit(I2C_TypeDef* i2cType,GPIO_TypeDef* gpioType)
+void Sensor_Init(void)
 {
-	I2C_DeInit(i2cType);
-	I2C_SoftwareResetCmd(i2cType,ENABLE);
+	I2C_InitTypeDef I2C_InitStruct;
+	GPIO_InitTypeDef GPIO_InitStruct;
 
-	GPIO_DeInit(gpioType);
+	I2C_DeInit(I2Cx);
+
+	RCC_APB1PeriphClockCmd(I2Cx_RCC, ENABLE);
+
+	I2C_InitStruct.I2C_ClockSpeed = MASTER_CLOCK_SPEED;
+	I2C_InitStruct.I2C_Mode = I2C_Mode_I2C;
+	I2C_InitStruct.I2C_DutyCycle = I2C_DutyCycle_2;
+	I2C_InitStruct.I2C_OwnAddress1 = 0x00;
+	I2C_InitStruct.I2C_Ack = I2C_Ack_Enable;
+	I2C_InitStruct.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit;
+	I2C_Init(I2Cx, &I2C_InitStruct);
+	I2C_Cmd(I2Cx, ENABLE);
+
+	#ifdef STM32F1_REMAP
+	GPIO_PinRemapConfig(GPIO_Remap_I2C1,ENABLE);
+	#endif
+
+	GPIO_InitStruct.GPIO_Pin = I2C_PIN_SCL | I2C_PIN_SDA;
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_OD;
+	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(I2C_GPIO, &GPIO_InitStruct);
+
+}
+
+void Sensor_TEMP_Deinit(void)
+{
+	I2C_DeInit(I2Cx);
+	I2C_SoftwareResetCmd(I2Cx,ENABLE);
+
+	GPIO_DeInit(I2C_GPIO);
 
 }
 
@@ -123,17 +150,17 @@ float Sensor_TEMP_Read()
 {
 	uint8_t raw_temprature[3];
 
-	Sensor_start(I2C1, SI7021_SLAVE_ADDR<<1, I2C_Direction_Transmitter); // comienzo de trama y primer comando con r/w en 0
-	Sensor_write(I2C1, TRIGGER_TEMP_MEASURE_NOHOLD); // escribo el comando de lectura
-	//Sensor_write(I2C1, 0x03); // write another byte to the slave
-	Sensor_stop(I2C1); // Deten la transmision, y genera estado de stop.
+	Sensor_start(I2Cx, SI7021_SLAVE_ADDR_Write, I2C_Direction_Transmitter); // comienzo de trama y primer comando con r/w en 0
+	Sensor_write(I2Cx, TRIGGER_TEMP_MEASURE_NOHOLD); // escribo el comando de lectura
+	//Sensor_write(I2Cx, 0x03); // write another byte to the slave
+	Sensor_stop(I2Cx); // Deten la transmision, y genera estado de stop.
 
 	delay_ms(50);
 
-	Sensor_start(I2C1, SI7021_SLAVE_ADDR<<1|1, I2C_Direction_Receiver); // start a transmission in Master receiver mode
-	raw_temprature[0] = Sensor_read_ack(I2C1); 					   //MSB Byte
-	raw_temprature[1] = Sensor_read_ack(I2C1); 					   //LSB Byte
-	raw_temprature[2] = Sensor_read_nack(I2C1);					   //CRC Byte
+	Sensor_start(I2Cx, SI7021_SLAVE_ADDR_Read, I2C_Direction_Receiver); // start a transmission in Master receiver mode
+	raw_temprature[0] = Sensor_read_ack(I2Cx); 					   //MSB Byte
+	raw_temprature[1] = Sensor_read_ack(I2Cx); 					   //LSB Byte
+	raw_temprature[2] = Sensor_read_nack(I2Cx);					   //CRC Byte
 
 	unsigned int temperatureRaw = (raw_temprature[0] << 8 ) | raw_temprature[1];
 	uint16_t raw_value = ((uint16_t) raw_temprature[0] << 8) | (uint16_t) raw_temprature[1];
@@ -141,10 +168,8 @@ float Sensor_TEMP_Read()
 	{
 		return -404;
 	}
-	temperature = ((175.72*temperatureRaw)/65536)-46.85;
-	// datasheet tiene esta equacion para temperatura
-	//return ((temperatureRaw * 175.72) / 65536.0) - 46.85;
-	return temperature;
+
+	return ((175.72*temperatureRaw)/65536)-46.85;
 }
 
 
@@ -152,17 +177,17 @@ float Sensor_HUM_Read()
 {
 	uint8_t raw_humidity[3];
 
-	Sensor_start(I2C1, SI7021_SLAVE_ADDR<<1, I2C_Direction_Transmitter); // start a transmission in Master transmitter mode
-	Sensor_write(I2C1, TRIGGER_HUMD_MEASURE_NOHOLD); // write one byte to the slave
-	//Sensor_write(I2C1, 0x03); // write another byte to the slave
-	Sensor_stop(I2C1); // stop the transmission
+	Sensor_start(I2Cx, SI7021_SLAVE_ADDR_Write, I2C_Direction_Transmitter); // start a transmission in Master transmitter mode
+	Sensor_write(I2Cx, TRIGGER_HUMD_MEASURE_NOHOLD); // write one byte to the slave
+	//Sensor_write(I2Cx, 0x03); // write another byte to the slave
+	Sensor_stop(I2Cx); // stop the transmission
 
 	delay_ms(50);
 
-	Sensor_start(I2C1, SI7021_SLAVE_ADDR<<1|1, I2C_Direction_Receiver); // start a transmission in Master receiver mode
-	raw_humidity[0] = Sensor_read_ack(I2C1); 							//MSB Byte
-	raw_humidity[1] = Sensor_read_ack(I2C1); 							//LSB Byte
-	raw_humidity[2] = Sensor_read_nack(I2C1);							//CRC Byte
+	Sensor_start(I2Cx, SI7021_SLAVE_ADDR_Read, I2C_Direction_Receiver); // start a transmission in Master receiver mode
+	raw_humidity[0] = Sensor_read_ack(I2Cx); 							//MSB Byte
+	raw_humidity[1] = Sensor_read_ack(I2Cx); 							//LSB Byte
+	raw_humidity[2] = Sensor_read_nack(I2Cx);							//CRC Byte
 
 	uint16_t raw_value = ((uint16_t) raw_humidity[0] << 8) | (uint16_t) (raw_humidity[1] & 0xFD);
 	if(raw_value == 0)
