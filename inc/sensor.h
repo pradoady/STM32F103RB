@@ -11,11 +11,7 @@
 void Sensor_TEMP_Deinit(I2C_TypeDef* i2cType,GPIO_TypeDef* gpioType);
 float Sensor_TEMP_Read();
 float Sensor_HUM_Read();
-void Sensor_start(I2C_TypeDef* I2C, uint8_t address, uint8_t direction);
-void Sensor_write(I2C_TypeDef* I2C, uint8_t data);
-uint8_t Sensor_read_ack(I2C_TypeDef* I2C);
-uint8_t Sensor_read_nack(I2C_TypeDef* I2C);
-void Sensor_stop(I2C_TypeDef* I2C);
+
 
  /*Defines*/
 
