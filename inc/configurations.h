@@ -25,4 +25,14 @@ void OutString(USART_TypeDef *USARTx,char *s);
 #define FALSE	0
 
 
-
+#ifdef DEBUG
+/**
+ * This macro will print on USART2.
+ * The (...) parameters should be as you were using the 
+ * sprintf function.
+ */ 
+#define printDebug(buffer,...) do{\
+                                sprintf(buffer,__VA_ARGS__);\
+                                OutString(USART2, &buffer);\
+                                }while(0)
+#endif
