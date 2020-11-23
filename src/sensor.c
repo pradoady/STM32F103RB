@@ -8,7 +8,7 @@
 
 static float temperature;
 
-void DRV_TEMP_Deinit(I2C_TypeDef* i2cType,GPIO_TypeDef* gpioType)
+void Sensor_TEMP_Deinit(I2C_TypeDef* i2cType,GPIO_TypeDef* gpioType)
 {
 	I2C_DeInit(i2cType);
 	I2C_SoftwareResetCmd(i2cType,ENABLE);
@@ -18,7 +18,7 @@ void DRV_TEMP_Deinit(I2C_TypeDef* i2cType,GPIO_TypeDef* gpioType)
 }
 
 
-float DRV_TEMP_Read()
+float Sensor_TEMP_Read()
 {
 	uint8_t raw_temprature[3];
 
@@ -47,7 +47,7 @@ float DRV_TEMP_Read()
 }
 
 
-float DRV_HUM_Read()
+float Sensor_HUM_Read()
 {
 	uint8_t raw_humidity[3];
 
