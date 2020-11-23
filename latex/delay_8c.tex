@@ -1,0 +1,36 @@
+\hypertarget{delay_8c}{}\doxysection{src/delay.c File Reference}
+\label{delay_8c}\index{src/delay.c@{src/delay.c}}
+{\ttfamily \#include \char`\"{}delay.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{delay_8c_a26a3b975cbfb2388878bc2772493567b}{delay\+\_\+ms}} (u32 n)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint32\+\_\+t \mbox{\hyperlink{delay_8c_ab90902299abacfcfb8e412d2bb37037b}{delay\+Timer}} =0
+\begin{DoxyCompactList}\small\item\em This variable is used in Interrupt context to handle a simple delay. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{delay_8c_a26a3b975cbfb2388878bc2772493567b}\label{delay_8c_a26a3b975cbfb2388878bc2772493567b}} 
+\index{delay.c@{delay.c}!delay\_ms@{delay\_ms}}
+\index{delay\_ms@{delay\_ms}!delay.c@{delay.c}}
+\doxysubsubsection{\texorpdfstring{delay\_ms()}{delay\_ms()}}
+{\footnotesize\ttfamily void delay\+\_\+ms (\begin{DoxyParamCaption}\item[{u32}]{n }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{delay_8c_ab90902299abacfcfb8e412d2bb37037b}\label{delay_8c_ab90902299abacfcfb8e412d2bb37037b}} 
+\index{delay.c@{delay.c}!delayTimer@{delayTimer}}
+\index{delayTimer@{delayTimer}!delay.c@{delay.c}}
+\doxysubsubsection{\texorpdfstring{delayTimer}{delayTimer}}
+{\footnotesize\ttfamily volatile uint32\+\_\+t delay\+Timer =0}
+
+
+
+This variable is used in Interrupt context to handle a simple delay. 
+
+The interrupt is generated each m\+Second. For that reason this delay can be used in any context that is needed a simply delay. 

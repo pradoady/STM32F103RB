@@ -1,0 +1,59 @@
+\hypertarget{group___s_t_m32_f10x___system___private___defines}{}\doxysection{S\+T\+M32\+F10x\+\_\+\+System\+\_\+\+Private\+\_\+\+Defines}
+\label{group___s_t_m32_f10x___system___private___defines}\index{STM32F10x\_System\_Private\_Defines@{STM32F10x\_System\_Private\_Defines}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___s_t_m32_f10x___system___private___defines_ga40e1495541cbb4acbe3f1819bd87a9fe}{V\+E\+C\+T\+\_\+\+T\+A\+B\+\_\+\+O\+F\+F\+S\+ET}}~0x0
+\item 
+\#define \mbox{\hyperlink{group___s_t_m32_f10x___system___private___defines_gaeed3dd9022f9d616e8b951cbc49a29bd}{P\+L\+L\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+H\+SI}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___s_t_m32_f10x___system___private___defines_gaa3cd3e43291e81e795d642b79b6088e6}{System\+Core\+Clock}} = 72000000
+\item 
+\+\_\+\+\_\+I uint8\+\_\+t \mbox{\hyperlink{group___s_t_m32_f10x___system___private___defines_gacdc3ef54c0704c90e69a8a84fb2d970d}{A\+H\+B\+Presc\+Table}} \mbox{[}16\mbox{]} = \{0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___s_t_m32_f10x___system___private___defines_gaeed3dd9022f9d616e8b951cbc49a29bd}\label{group___s_t_m32_f10x___system___private___defines_gaeed3dd9022f9d616e8b951cbc49a29bd}} 
+\index{STM32F10x\_System\_Private\_Defines@{STM32F10x\_System\_Private\_Defines}!PLL\_SOURCE\_HSI@{PLL\_SOURCE\_HSI}}
+\index{PLL\_SOURCE\_HSI@{PLL\_SOURCE\_HSI}!STM32F10x\_System\_Private\_Defines@{STM32F10x\_System\_Private\_Defines}}
+\doxysubsubsection{\texorpdfstring{PLL\_SOURCE\_HSI}{PLL\_SOURCE\_HSI}}
+{\footnotesize\ttfamily \#define P\+L\+L\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+H\+SI}
+
+\mbox{\Hypertarget{group___s_t_m32_f10x___system___private___defines_ga40e1495541cbb4acbe3f1819bd87a9fe}\label{group___s_t_m32_f10x___system___private___defines_ga40e1495541cbb4acbe3f1819bd87a9fe}} 
+\index{STM32F10x\_System\_Private\_Defines@{STM32F10x\_System\_Private\_Defines}!VECT\_TAB\_OFFSET@{VECT\_TAB\_OFFSET}}
+\index{VECT\_TAB\_OFFSET@{VECT\_TAB\_OFFSET}!STM32F10x\_System\_Private\_Defines@{STM32F10x\_System\_Private\_Defines}}
+\doxysubsubsection{\texorpdfstring{VECT\_TAB\_OFFSET}{VECT\_TAB\_OFFSET}}
+{\footnotesize\ttfamily \#define V\+E\+C\+T\+\_\+\+T\+A\+B\+\_\+\+O\+F\+F\+S\+ET~0x0}
+
+$<$ Uncomment the line corresponding to the desired System clock (S\+Y\+S\+C\+LK) frequency (after reset the H\+SI is used as S\+Y\+S\+C\+LK source)\hypertarget{group___s_t_m32_f10x___system___private___defines_autotoc_md0}{}\doxysubsection{I\+M\+P\+O\+R\+T\+A\+N\+T N\+O\+T\+E\+:}\label{group___s_t_m32_f10x___system___private___defines_autotoc_md0}
+
+\begin{DoxyEnumerate}
+\item After each device reset the H\+SI is used as System clock source.
+\item If none of the define below is enabled, the H\+SI is used as System clock source.
+\item The System clock configuration functions provided within this file assume that an external 8M\+Hz crystal is used to drive the System clock.
+
+If you are using different crystal you have to adapt those functions accordingly.
+\end{DoxyEnumerate}
+
+$<$ Uncomment the following line if you need to relocate your vector Table in Internal S\+R\+AM. Vector Table base offset field. This value must be a multiple of 0x200. 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{group___s_t_m32_f10x___system___private___defines_gacdc3ef54c0704c90e69a8a84fb2d970d}\label{group___s_t_m32_f10x___system___private___defines_gacdc3ef54c0704c90e69a8a84fb2d970d}} 
+\index{STM32F10x\_System\_Private\_Defines@{STM32F10x\_System\_Private\_Defines}!AHBPrescTable@{AHBPrescTable}}
+\index{AHBPrescTable@{AHBPrescTable}!STM32F10x\_System\_Private\_Defines@{STM32F10x\_System\_Private\_Defines}}
+\doxysubsubsection{\texorpdfstring{AHBPrescTable}{AHBPrescTable}}
+{\footnotesize\ttfamily \+\_\+\+\_\+I uint8\+\_\+t A\+H\+B\+Presc\+Table\mbox{[}16\mbox{]} = \{0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9\}}
+
+\mbox{\Hypertarget{group___s_t_m32_f10x___system___private___defines_gaa3cd3e43291e81e795d642b79b6088e6}\label{group___s_t_m32_f10x___system___private___defines_gaa3cd3e43291e81e795d642b79b6088e6}} 
+\index{STM32F10x\_System\_Private\_Defines@{STM32F10x\_System\_Private\_Defines}!SystemCoreClock@{SystemCoreClock}}
+\index{SystemCoreClock@{SystemCoreClock}!STM32F10x\_System\_Private\_Defines@{STM32F10x\_System\_Private\_Defines}}
+\doxysubsubsection{\texorpdfstring{SystemCoreClock}{SystemCoreClock}}
+{\footnotesize\ttfamily uint32\+\_\+t System\+Core\+Clock = 72000000}
+

@@ -7,9 +7,11 @@
 #include "sensor.h"
 
 
-/**
- *  Static Function Declarations
- */
+/******************************************************************************
+ *  																	      *
+ * 					Private Static Functions.                                 *
+ *     																		  *
+ ******************************************************************************/
 
 static void Sensor_start(I2C_TypeDef* I2C, uint8_t address, uint8_t direction);
 static void Sensor_write(I2C_TypeDef* I2C, uint8_t data);
@@ -18,13 +20,14 @@ static uint8_t Sensor_read_nack(I2C_TypeDef* I2C);
 static void Sensor_stop(I2C_TypeDef* I2C);
 
 
-/* This function issues a start condition and
- * transmits the slave address + R/W bit
+/**
+ *  This function issues a start condition and
+ *  transmits the slave address + R/W bit
  *
  * Parameters:
- * 		I2C --> the I2C peripheral e.g. I2C1
- * 		address --> the 7 bit slave address
- * 		direction --> the transmission direction can be:
+ * 		I2C 		--> the I2C peripheral e.g. I2C1
+ * 		address 	--> the 7 bit slave address
+ * 		direction 	--> the transmission direction can be:
  * 						I2C_Direction_Tranmitter for Master transmitter mode
  * 						I2C_Direction_Receiver for Master receiver
  */
@@ -54,8 +57,9 @@ static void Sensor_start(I2C_TypeDef* I2C, uint8_t address, uint8_t direction){
 	}
 }
 
-/* This function transmits one byte to the slave device
- * Parameters:
+/**
+ *  This function transmits one byte to the slave device
+ *  Parameters:
  *		I2C --> the I2C peripheral e.g. I2C1
  *		data --> the data byte to be transmitted
  */
@@ -103,10 +107,11 @@ static void Sensor_stop(I2C_TypeDef* I2C){
 	I2C_GenerateSTOP(I2C, ENABLE);
 }
 
-/**
- *  Global Functions.
- * 
- */
+/******************************************************************************
+ *  																	      *
+ * 							Global Functions.                                 *
+ *     																		  *
+ ******************************************************************************/
 void Sensor_Init(void)
 {
 	I2C_InitTypeDef I2C_InitStruct;

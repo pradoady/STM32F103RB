@@ -1,0 +1,312 @@
+\hypertarget{sensor_8h}{}\doxysection{inc/sensor.h File Reference}
+\label{sensor_8h}\index{inc/sensor.h@{inc/sensor.h}}
+{\ttfamily \#include \char`\"{}stm32f10x.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f1xx\+\_\+nucleo.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{sensor_8h_aaf2961db37fdbca9ebc9465799905feb}{S\+T\+M32\+F1\+\_\+\+R\+E\+M\+AP}}
+\item 
+\#define \mbox{\hyperlink{sensor_8h_adeb6ad648269b5f3c95daf1911c2e56b}{I2\+C\+\_\+\+P\+I\+N\+\_\+\+S\+DA}}~G\+P\+I\+O\+\_\+\+Pin\+\_\+9
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a031d7c9ccb2b83c0b345775c94c58e5a}{I2\+C\+\_\+\+P\+I\+N\+\_\+\+S\+CL}}~G\+P\+I\+O\+\_\+\+Pin\+\_\+8
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a969b7194ab4f7283919f6ba6f4bd5a0f}{High\+Lvl\+\_\+\+S\+D\+A\+\_\+\+S\+C\+L\+\_\+\+I2C}}~0x300
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a4a61c37d0a1444063dad599631a7831e}{Low\+Lvl\+\_\+\+S\+D\+A\+\_\+\+I2C}}~0x100
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a8c08c1c2795aadb3a09802a7321a71e3}{Low\+Lvl\+\_\+\+S\+C\+L\+\_\+\+I2C}}~0x000
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a3fd814d0c8b7c1d32ce5afd53f4de5ca}{High\+Lvl\+\_\+\+S\+C\+L\+\_\+\+I2C}}~0x100
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a9c50f081d86490d1b16fc67a63dd2cf3}{S\+I7021\+\_\+\+S\+L\+A\+V\+E\+\_\+\+A\+D\+DR}}~0x40
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a4cf7bfc3529b1460bba4dd6899f4198a}{S\+I7021\+\_\+\+S\+L\+A\+V\+E\+\_\+\+A\+D\+D\+R\+\_\+\+Read}}~((\mbox{\hyperlink{sensor_8h_a9c50f081d86490d1b16fc67a63dd2cf3}{S\+I7021\+\_\+\+S\+L\+A\+V\+E\+\_\+\+A\+D\+DR}}$<$$<$1)$\vert$ 0x01)
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a545a16f6ce5c133ed4987ea92895a131}{S\+I7021\+\_\+\+S\+L\+A\+V\+E\+\_\+\+A\+D\+D\+R\+\_\+\+Write}}~(\mbox{\hyperlink{sensor_8h_a9c50f081d86490d1b16fc67a63dd2cf3}{S\+I7021\+\_\+\+S\+L\+A\+V\+E\+\_\+\+A\+D\+DR}}$<$$<$1)
+\item 
+\#define \mbox{\hyperlink{sensor_8h_aa1f490bc841025134aadf62334a3d2da}{I2\+C\+\_\+\+G\+P\+I\+O\+\_\+\+R\+CC}}~R\+C\+C\+\_\+\+A\+P\+B2\+Periph\+\_\+\+G\+P\+I\+OB
+\item 
+\#define \mbox{\hyperlink{sensor_8h_ab86597a27e21affbbfd0190abdb24b8f}{I2\+C\+\_\+\+G\+P\+IO}}~G\+P\+I\+OB
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a2cd2c596e1269ac2a8f98488fa54393e}{I2\+Cx\+\_\+\+R\+CC}}~R\+C\+C\+\_\+\+A\+P\+B1\+Periph\+\_\+\+I2\+C1
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a01f0f8cf04d3aa99ef2addf546d6a869}{I2\+Cx}}~I2\+C1
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a74e972c4673eca858716010278e5302c}{T\+R\+I\+G\+G\+E\+R\+\_\+\+T\+E\+M\+P\+\_\+\+M\+E\+A\+S\+U\+R\+E\+\_\+\+H\+O\+LD}}~0x\+E3
+\begin{DoxyCompactList}\small\item\em S\+I7021 Sensor Commands. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{sensor_8h_a7c9bcfe72675404f84b7870494297afa}{T\+R\+I\+G\+G\+E\+R\+\_\+\+H\+U\+M\+D\+\_\+\+M\+E\+A\+S\+U\+R\+E\+\_\+\+H\+O\+LD}}~0x\+E5
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a275485ce3ecf6c76cc101a6219ddd0e0}{T\+R\+I\+G\+G\+E\+R\+\_\+\+T\+E\+M\+P\+\_\+\+M\+E\+A\+S\+U\+R\+E\+\_\+\+N\+O\+H\+O\+LD}}~0x\+F3
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a0659a6fc516c148c4f0cee547e56568b}{T\+R\+I\+G\+G\+E\+R\+\_\+\+H\+U\+M\+D\+\_\+\+M\+E\+A\+S\+U\+R\+E\+\_\+\+N\+O\+H\+O\+LD}}~0x\+F5
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a55ed60e8a2df61a067ef0fb42f79f6b2}{W\+R\+I\+T\+E\+\_\+\+U\+S\+E\+R\+\_\+\+R\+EG}}~0x\+E6
+\item 
+\#define \mbox{\hyperlink{sensor_8h_ac8f29e611d6f87ee93d909b98a4db95d}{R\+E\+A\+D\+\_\+\+U\+S\+E\+R\+\_\+\+R\+EG}}~0x\+E7
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a74625341a79e3484830c401d8947443c}{S\+O\+F\+T\+\_\+\+R\+E\+S\+ET}}~0x\+FE
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a04cef12730209bc72277b64111308b42}{S\+I7021\+\_\+\+E\+R\+R\+\_\+\+OK}}~\char`\"{}Operation returned O\+K.\char`\"{}
+\begin{DoxyCompactList}\small\item\em S\+I7021 Driver Error Codes. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{sensor_8h_a0abfa8d0b3297244d470fcdbce8e39da}{S\+I7021\+\_\+\+E\+R\+R\+\_\+\+C\+O\+N\+F\+IG}}~\char`\"{}Error on configration.\char`\"{}
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a1a536c4aff63acd66547e006b587841b}{S\+I7021\+\_\+\+E\+R\+R\+\_\+\+I\+N\+S\+T\+A\+LL}}~\char`\"{}Error on installation.\char`\"{}
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a277249c1e2c9ac97e4bec42c79ad4e49}{S\+I7021\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+F\+O\+U\+ND}}~\char`\"{}Error -\/ N\+OT F\+O\+U\+ND\char`\"{}
+\item 
+\#define \mbox{\hyperlink{sensor_8h_ad1c1ac433562f82e632c21f92c0fd4a3}{S\+I7021\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG}}~\char`\"{}Error -\/ Invalid Argument\char`\"{}
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a7cc0cccf705f1f1807d09abc3d1bea14}{S\+I7021\+\_\+\+E\+R\+R\+\_\+\+F\+A\+IL}}~\char`\"{}Error -\/ Failed\char`\"{}
+\item 
+\#define \mbox{\hyperlink{sensor_8h_adf36521836ea146264b0db90fd02fb45}{S\+I7021\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+T\+A\+TE}}~\char`\"{}Error -\/ Invalid State\char`\"{}
+\item 
+\#define \mbox{\hyperlink{sensor_8h_af3c553ace8f63aa562e2263c47a1b5ed}{S\+I7021\+\_\+\+E\+R\+R\+\_\+\+T\+I\+M\+E\+O\+UT}}~\char`\"{}Error -\/ Time-\/Out\char`\"{}
+\item 
+\#define \mbox{\hyperlink{sensor_8h_a8cc079c4fd767c2e64f9df5c024427bf}{M\+A\+S\+T\+E\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+S\+P\+E\+ED}}~100000
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sensor_8h_a1d6f7a4e7397d8b2d3a47b1c743cb33d}{Sensor\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 
+\begin{DoxyItemize}
+\item Global Functions. 
+\end{DoxyItemize}\end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sensor_8h_ac99a5f8a60048dc0fb2e3218ac4ed27f}{Sensor\+\_\+\+T\+E\+M\+P\+\_\+\+Deinit}} (void)
+\item 
+float \mbox{\hyperlink{sensor_8h_a294f5cbdaacdbf9fde958c891f78daa7}{Sensor\+\_\+\+T\+E\+M\+P\+\_\+\+Read}} ()
+\item 
+float \mbox{\hyperlink{sensor_8h_ad0f223089626c4f03befa1d29bb5932e}{Sensor\+\_\+\+H\+U\+M\+\_\+\+Read}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{sensor_8h_a3fd814d0c8b7c1d32ce5afd53f4de5ca}\label{sensor_8h_a3fd814d0c8b7c1d32ce5afd53f4de5ca}} 
+\index{sensor.h@{sensor.h}!HighLvl\_SCL\_I2C@{HighLvl\_SCL\_I2C}}
+\index{HighLvl\_SCL\_I2C@{HighLvl\_SCL\_I2C}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{HighLvl\_SCL\_I2C}{HighLvl\_SCL\_I2C}}
+{\footnotesize\ttfamily \#define High\+Lvl\+\_\+\+S\+C\+L\+\_\+\+I2C~0x100}
+
+\mbox{\Hypertarget{sensor_8h_a969b7194ab4f7283919f6ba6f4bd5a0f}\label{sensor_8h_a969b7194ab4f7283919f6ba6f4bd5a0f}} 
+\index{sensor.h@{sensor.h}!HighLvl\_SDA\_SCL\_I2C@{HighLvl\_SDA\_SCL\_I2C}}
+\index{HighLvl\_SDA\_SCL\_I2C@{HighLvl\_SDA\_SCL\_I2C}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{HighLvl\_SDA\_SCL\_I2C}{HighLvl\_SDA\_SCL\_I2C}}
+{\footnotesize\ttfamily \#define High\+Lvl\+\_\+\+S\+D\+A\+\_\+\+S\+C\+L\+\_\+\+I2C~0x300}
+
+\mbox{\Hypertarget{sensor_8h_ab86597a27e21affbbfd0190abdb24b8f}\label{sensor_8h_ab86597a27e21affbbfd0190abdb24b8f}} 
+\index{sensor.h@{sensor.h}!I2C\_GPIO@{I2C\_GPIO}}
+\index{I2C\_GPIO@{I2C\_GPIO}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_GPIO}{I2C\_GPIO}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+G\+P\+IO~G\+P\+I\+OB}
+
+\mbox{\Hypertarget{sensor_8h_aa1f490bc841025134aadf62334a3d2da}\label{sensor_8h_aa1f490bc841025134aadf62334a3d2da}} 
+\index{sensor.h@{sensor.h}!I2C\_GPIO\_RCC@{I2C\_GPIO\_RCC}}
+\index{I2C\_GPIO\_RCC@{I2C\_GPIO\_RCC}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_GPIO\_RCC}{I2C\_GPIO\_RCC}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+G\+P\+I\+O\+\_\+\+R\+CC~R\+C\+C\+\_\+\+A\+P\+B2\+Periph\+\_\+\+G\+P\+I\+OB}
+
+\mbox{\Hypertarget{sensor_8h_a031d7c9ccb2b83c0b345775c94c58e5a}\label{sensor_8h_a031d7c9ccb2b83c0b345775c94c58e5a}} 
+\index{sensor.h@{sensor.h}!I2C\_PIN\_SCL@{I2C\_PIN\_SCL}}
+\index{I2C\_PIN\_SCL@{I2C\_PIN\_SCL}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_PIN\_SCL}{I2C\_PIN\_SCL}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+P\+I\+N\+\_\+\+S\+CL~G\+P\+I\+O\+\_\+\+Pin\+\_\+8}
+
+\mbox{\Hypertarget{sensor_8h_adeb6ad648269b5f3c95daf1911c2e56b}\label{sensor_8h_adeb6ad648269b5f3c95daf1911c2e56b}} 
+\index{sensor.h@{sensor.h}!I2C\_PIN\_SDA@{I2C\_PIN\_SDA}}
+\index{I2C\_PIN\_SDA@{I2C\_PIN\_SDA}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_PIN\_SDA}{I2C\_PIN\_SDA}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+P\+I\+N\+\_\+\+S\+DA~G\+P\+I\+O\+\_\+\+Pin\+\_\+9}
+
+\mbox{\Hypertarget{sensor_8h_a01f0f8cf04d3aa99ef2addf546d6a869}\label{sensor_8h_a01f0f8cf04d3aa99ef2addf546d6a869}} 
+\index{sensor.h@{sensor.h}!I2Cx@{I2Cx}}
+\index{I2Cx@{I2Cx}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{I2Cx}{I2Cx}}
+{\footnotesize\ttfamily \#define I2\+Cx~I2\+C1}
+
+\mbox{\Hypertarget{sensor_8h_a2cd2c596e1269ac2a8f98488fa54393e}\label{sensor_8h_a2cd2c596e1269ac2a8f98488fa54393e}} 
+\index{sensor.h@{sensor.h}!I2Cx\_RCC@{I2Cx\_RCC}}
+\index{I2Cx\_RCC@{I2Cx\_RCC}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{I2Cx\_RCC}{I2Cx\_RCC}}
+{\footnotesize\ttfamily \#define I2\+Cx\+\_\+\+R\+CC~R\+C\+C\+\_\+\+A\+P\+B1\+Periph\+\_\+\+I2\+C1}
+
+\mbox{\Hypertarget{sensor_8h_a8c08c1c2795aadb3a09802a7321a71e3}\label{sensor_8h_a8c08c1c2795aadb3a09802a7321a71e3}} 
+\index{sensor.h@{sensor.h}!LowLvl\_SCL\_I2C@{LowLvl\_SCL\_I2C}}
+\index{LowLvl\_SCL\_I2C@{LowLvl\_SCL\_I2C}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{LowLvl\_SCL\_I2C}{LowLvl\_SCL\_I2C}}
+{\footnotesize\ttfamily \#define Low\+Lvl\+\_\+\+S\+C\+L\+\_\+\+I2C~0x000}
+
+\mbox{\Hypertarget{sensor_8h_a4a61c37d0a1444063dad599631a7831e}\label{sensor_8h_a4a61c37d0a1444063dad599631a7831e}} 
+\index{sensor.h@{sensor.h}!LowLvl\_SDA\_I2C@{LowLvl\_SDA\_I2C}}
+\index{LowLvl\_SDA\_I2C@{LowLvl\_SDA\_I2C}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{LowLvl\_SDA\_I2C}{LowLvl\_SDA\_I2C}}
+{\footnotesize\ttfamily \#define Low\+Lvl\+\_\+\+S\+D\+A\+\_\+\+I2C~0x100}
+
+\mbox{\Hypertarget{sensor_8h_a8cc079c4fd767c2e64f9df5c024427bf}\label{sensor_8h_a8cc079c4fd767c2e64f9df5c024427bf}} 
+\index{sensor.h@{sensor.h}!MASTER\_CLOCK\_SPEED@{MASTER\_CLOCK\_SPEED}}
+\index{MASTER\_CLOCK\_SPEED@{MASTER\_CLOCK\_SPEED}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{MASTER\_CLOCK\_SPEED}{MASTER\_CLOCK\_SPEED}}
+{\footnotesize\ttfamily \#define M\+A\+S\+T\+E\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+S\+P\+E\+ED~100000}
+
+\mbox{\Hypertarget{sensor_8h_ac8f29e611d6f87ee93d909b98a4db95d}\label{sensor_8h_ac8f29e611d6f87ee93d909b98a4db95d}} 
+\index{sensor.h@{sensor.h}!READ\_USER\_REG@{READ\_USER\_REG}}
+\index{READ\_USER\_REG@{READ\_USER\_REG}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{READ\_USER\_REG}{READ\_USER\_REG}}
+{\footnotesize\ttfamily \#define R\+E\+A\+D\+\_\+\+U\+S\+E\+R\+\_\+\+R\+EG~0x\+E7}
+
+\mbox{\Hypertarget{sensor_8h_a0abfa8d0b3297244d470fcdbce8e39da}\label{sensor_8h_a0abfa8d0b3297244d470fcdbce8e39da}} 
+\index{sensor.h@{sensor.h}!SI7021\_ERR\_CONFIG@{SI7021\_ERR\_CONFIG}}
+\index{SI7021\_ERR\_CONFIG@{SI7021\_ERR\_CONFIG}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SI7021\_ERR\_CONFIG}{SI7021\_ERR\_CONFIG}}
+{\footnotesize\ttfamily \#define S\+I7021\+\_\+\+E\+R\+R\+\_\+\+C\+O\+N\+F\+IG~\char`\"{}Error on configration.\char`\"{}}
+
+\mbox{\Hypertarget{sensor_8h_a7cc0cccf705f1f1807d09abc3d1bea14}\label{sensor_8h_a7cc0cccf705f1f1807d09abc3d1bea14}} 
+\index{sensor.h@{sensor.h}!SI7021\_ERR\_FAIL@{SI7021\_ERR\_FAIL}}
+\index{SI7021\_ERR\_FAIL@{SI7021\_ERR\_FAIL}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SI7021\_ERR\_FAIL}{SI7021\_ERR\_FAIL}}
+{\footnotesize\ttfamily \#define S\+I7021\+\_\+\+E\+R\+R\+\_\+\+F\+A\+IL~\char`\"{}Error -\/ Failed\char`\"{}}
+
+\mbox{\Hypertarget{sensor_8h_a1a536c4aff63acd66547e006b587841b}\label{sensor_8h_a1a536c4aff63acd66547e006b587841b}} 
+\index{sensor.h@{sensor.h}!SI7021\_ERR\_INSTALL@{SI7021\_ERR\_INSTALL}}
+\index{SI7021\_ERR\_INSTALL@{SI7021\_ERR\_INSTALL}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SI7021\_ERR\_INSTALL}{SI7021\_ERR\_INSTALL}}
+{\footnotesize\ttfamily \#define S\+I7021\+\_\+\+E\+R\+R\+\_\+\+I\+N\+S\+T\+A\+LL~\char`\"{}Error on installation.\char`\"{}}
+
+\mbox{\Hypertarget{sensor_8h_ad1c1ac433562f82e632c21f92c0fd4a3}\label{sensor_8h_ad1c1ac433562f82e632c21f92c0fd4a3}} 
+\index{sensor.h@{sensor.h}!SI7021\_ERR\_INVALID\_ARG@{SI7021\_ERR\_INVALID\_ARG}}
+\index{SI7021\_ERR\_INVALID\_ARG@{SI7021\_ERR\_INVALID\_ARG}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SI7021\_ERR\_INVALID\_ARG}{SI7021\_ERR\_INVALID\_ARG}}
+{\footnotesize\ttfamily \#define S\+I7021\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+RG~\char`\"{}Error -\/ Invalid Argument\char`\"{}}
+
+\mbox{\Hypertarget{sensor_8h_adf36521836ea146264b0db90fd02fb45}\label{sensor_8h_adf36521836ea146264b0db90fd02fb45}} 
+\index{sensor.h@{sensor.h}!SI7021\_ERR\_INVALID\_STATE@{SI7021\_ERR\_INVALID\_STATE}}
+\index{SI7021\_ERR\_INVALID\_STATE@{SI7021\_ERR\_INVALID\_STATE}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SI7021\_ERR\_INVALID\_STATE}{SI7021\_ERR\_INVALID\_STATE}}
+{\footnotesize\ttfamily \#define S\+I7021\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+T\+A\+TE~\char`\"{}Error -\/ Invalid State\char`\"{}}
+
+\mbox{\Hypertarget{sensor_8h_a277249c1e2c9ac97e4bec42c79ad4e49}\label{sensor_8h_a277249c1e2c9ac97e4bec42c79ad4e49}} 
+\index{sensor.h@{sensor.h}!SI7021\_ERR\_NOTFOUND@{SI7021\_ERR\_NOTFOUND}}
+\index{SI7021\_ERR\_NOTFOUND@{SI7021\_ERR\_NOTFOUND}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SI7021\_ERR\_NOTFOUND}{SI7021\_ERR\_NOTFOUND}}
+{\footnotesize\ttfamily \#define S\+I7021\+\_\+\+E\+R\+R\+\_\+\+N\+O\+T\+F\+O\+U\+ND~\char`\"{}Error -\/ N\+OT F\+O\+U\+ND\char`\"{}}
+
+\mbox{\Hypertarget{sensor_8h_a04cef12730209bc72277b64111308b42}\label{sensor_8h_a04cef12730209bc72277b64111308b42}} 
+\index{sensor.h@{sensor.h}!SI7021\_ERR\_OK@{SI7021\_ERR\_OK}}
+\index{SI7021\_ERR\_OK@{SI7021\_ERR\_OK}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SI7021\_ERR\_OK}{SI7021\_ERR\_OK}}
+{\footnotesize\ttfamily \#define S\+I7021\+\_\+\+E\+R\+R\+\_\+\+OK~\char`\"{}Operation returned O\+K.\char`\"{}}
+
+
+
+S\+I7021 Driver Error Codes. 
+
+\mbox{\Hypertarget{sensor_8h_af3c553ace8f63aa562e2263c47a1b5ed}\label{sensor_8h_af3c553ace8f63aa562e2263c47a1b5ed}} 
+\index{sensor.h@{sensor.h}!SI7021\_ERR\_TIMEOUT@{SI7021\_ERR\_TIMEOUT}}
+\index{SI7021\_ERR\_TIMEOUT@{SI7021\_ERR\_TIMEOUT}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SI7021\_ERR\_TIMEOUT}{SI7021\_ERR\_TIMEOUT}}
+{\footnotesize\ttfamily \#define S\+I7021\+\_\+\+E\+R\+R\+\_\+\+T\+I\+M\+E\+O\+UT~\char`\"{}Error -\/ Time-\/Out\char`\"{}}
+
+\mbox{\Hypertarget{sensor_8h_a9c50f081d86490d1b16fc67a63dd2cf3}\label{sensor_8h_a9c50f081d86490d1b16fc67a63dd2cf3}} 
+\index{sensor.h@{sensor.h}!SI7021\_SLAVE\_ADDR@{SI7021\_SLAVE\_ADDR}}
+\index{SI7021\_SLAVE\_ADDR@{SI7021\_SLAVE\_ADDR}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SI7021\_SLAVE\_ADDR}{SI7021\_SLAVE\_ADDR}}
+{\footnotesize\ttfamily \#define S\+I7021\+\_\+\+S\+L\+A\+V\+E\+\_\+\+A\+D\+DR~0x40}
+
+\mbox{\Hypertarget{sensor_8h_a4cf7bfc3529b1460bba4dd6899f4198a}\label{sensor_8h_a4cf7bfc3529b1460bba4dd6899f4198a}} 
+\index{sensor.h@{sensor.h}!SI7021\_SLAVE\_ADDR\_Read@{SI7021\_SLAVE\_ADDR\_Read}}
+\index{SI7021\_SLAVE\_ADDR\_Read@{SI7021\_SLAVE\_ADDR\_Read}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SI7021\_SLAVE\_ADDR\_Read}{SI7021\_SLAVE\_ADDR\_Read}}
+{\footnotesize\ttfamily \#define S\+I7021\+\_\+\+S\+L\+A\+V\+E\+\_\+\+A\+D\+D\+R\+\_\+\+Read~((\mbox{\hyperlink{sensor_8h_a9c50f081d86490d1b16fc67a63dd2cf3}{S\+I7021\+\_\+\+S\+L\+A\+V\+E\+\_\+\+A\+D\+DR}}$<$$<$1)$\vert$ 0x01)}
+
+\mbox{\Hypertarget{sensor_8h_a545a16f6ce5c133ed4987ea92895a131}\label{sensor_8h_a545a16f6ce5c133ed4987ea92895a131}} 
+\index{sensor.h@{sensor.h}!SI7021\_SLAVE\_ADDR\_Write@{SI7021\_SLAVE\_ADDR\_Write}}
+\index{SI7021\_SLAVE\_ADDR\_Write@{SI7021\_SLAVE\_ADDR\_Write}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SI7021\_SLAVE\_ADDR\_Write}{SI7021\_SLAVE\_ADDR\_Write}}
+{\footnotesize\ttfamily \#define S\+I7021\+\_\+\+S\+L\+A\+V\+E\+\_\+\+A\+D\+D\+R\+\_\+\+Write~(\mbox{\hyperlink{sensor_8h_a9c50f081d86490d1b16fc67a63dd2cf3}{S\+I7021\+\_\+\+S\+L\+A\+V\+E\+\_\+\+A\+D\+DR}}$<$$<$1)}
+
+\mbox{\Hypertarget{sensor_8h_a74625341a79e3484830c401d8947443c}\label{sensor_8h_a74625341a79e3484830c401d8947443c}} 
+\index{sensor.h@{sensor.h}!SOFT\_RESET@{SOFT\_RESET}}
+\index{SOFT\_RESET@{SOFT\_RESET}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SOFT\_RESET}{SOFT\_RESET}}
+{\footnotesize\ttfamily \#define S\+O\+F\+T\+\_\+\+R\+E\+S\+ET~0x\+FE}
+
+\mbox{\Hypertarget{sensor_8h_aaf2961db37fdbca9ebc9465799905feb}\label{sensor_8h_aaf2961db37fdbca9ebc9465799905feb}} 
+\index{sensor.h@{sensor.h}!STM32F1\_REMAP@{STM32F1\_REMAP}}
+\index{STM32F1\_REMAP@{STM32F1\_REMAP}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{STM32F1\_REMAP}{STM32F1\_REMAP}}
+{\footnotesize\ttfamily \#define S\+T\+M32\+F1\+\_\+\+R\+E\+M\+AP}
+
+\mbox{\Hypertarget{sensor_8h_a7c9bcfe72675404f84b7870494297afa}\label{sensor_8h_a7c9bcfe72675404f84b7870494297afa}} 
+\index{sensor.h@{sensor.h}!TRIGGER\_HUMD\_MEASURE\_HOLD@{TRIGGER\_HUMD\_MEASURE\_HOLD}}
+\index{TRIGGER\_HUMD\_MEASURE\_HOLD@{TRIGGER\_HUMD\_MEASURE\_HOLD}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{TRIGGER\_HUMD\_MEASURE\_HOLD}{TRIGGER\_HUMD\_MEASURE\_HOLD}}
+{\footnotesize\ttfamily \#define T\+R\+I\+G\+G\+E\+R\+\_\+\+H\+U\+M\+D\+\_\+\+M\+E\+A\+S\+U\+R\+E\+\_\+\+H\+O\+LD~0x\+E5}
+
+\mbox{\Hypertarget{sensor_8h_a0659a6fc516c148c4f0cee547e56568b}\label{sensor_8h_a0659a6fc516c148c4f0cee547e56568b}} 
+\index{sensor.h@{sensor.h}!TRIGGER\_HUMD\_MEASURE\_NOHOLD@{TRIGGER\_HUMD\_MEASURE\_NOHOLD}}
+\index{TRIGGER\_HUMD\_MEASURE\_NOHOLD@{TRIGGER\_HUMD\_MEASURE\_NOHOLD}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{TRIGGER\_HUMD\_MEASURE\_NOHOLD}{TRIGGER\_HUMD\_MEASURE\_NOHOLD}}
+{\footnotesize\ttfamily \#define T\+R\+I\+G\+G\+E\+R\+\_\+\+H\+U\+M\+D\+\_\+\+M\+E\+A\+S\+U\+R\+E\+\_\+\+N\+O\+H\+O\+LD~0x\+F5}
+
+\mbox{\Hypertarget{sensor_8h_a74e972c4673eca858716010278e5302c}\label{sensor_8h_a74e972c4673eca858716010278e5302c}} 
+\index{sensor.h@{sensor.h}!TRIGGER\_TEMP\_MEASURE\_HOLD@{TRIGGER\_TEMP\_MEASURE\_HOLD}}
+\index{TRIGGER\_TEMP\_MEASURE\_HOLD@{TRIGGER\_TEMP\_MEASURE\_HOLD}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{TRIGGER\_TEMP\_MEASURE\_HOLD}{TRIGGER\_TEMP\_MEASURE\_HOLD}}
+{\footnotesize\ttfamily \#define T\+R\+I\+G\+G\+E\+R\+\_\+\+T\+E\+M\+P\+\_\+\+M\+E\+A\+S\+U\+R\+E\+\_\+\+H\+O\+LD~0x\+E3}
+
+
+
+S\+I7021 Sensor Commands. 
+
+\mbox{\Hypertarget{sensor_8h_a275485ce3ecf6c76cc101a6219ddd0e0}\label{sensor_8h_a275485ce3ecf6c76cc101a6219ddd0e0}} 
+\index{sensor.h@{sensor.h}!TRIGGER\_TEMP\_MEASURE\_NOHOLD@{TRIGGER\_TEMP\_MEASURE\_NOHOLD}}
+\index{TRIGGER\_TEMP\_MEASURE\_NOHOLD@{TRIGGER\_TEMP\_MEASURE\_NOHOLD}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{TRIGGER\_TEMP\_MEASURE\_NOHOLD}{TRIGGER\_TEMP\_MEASURE\_NOHOLD}}
+{\footnotesize\ttfamily \#define T\+R\+I\+G\+G\+E\+R\+\_\+\+T\+E\+M\+P\+\_\+\+M\+E\+A\+S\+U\+R\+E\+\_\+\+N\+O\+H\+O\+LD~0x\+F3}
+
+\mbox{\Hypertarget{sensor_8h_a55ed60e8a2df61a067ef0fb42f79f6b2}\label{sensor_8h_a55ed60e8a2df61a067ef0fb42f79f6b2}} 
+\index{sensor.h@{sensor.h}!WRITE\_USER\_REG@{WRITE\_USER\_REG}}
+\index{WRITE\_USER\_REG@{WRITE\_USER\_REG}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{WRITE\_USER\_REG}{WRITE\_USER\_REG}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+\_\+\+U\+S\+E\+R\+\_\+\+R\+EG~0x\+E6}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sensor_8h_ad0f223089626c4f03befa1d29bb5932e}\label{sensor_8h_ad0f223089626c4f03befa1d29bb5932e}} 
+\index{sensor.h@{sensor.h}!Sensor\_HUM\_Read@{Sensor\_HUM\_Read}}
+\index{Sensor\_HUM\_Read@{Sensor\_HUM\_Read}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{Sensor\_HUM\_Read()}{Sensor\_HUM\_Read()}}
+{\footnotesize\ttfamily float Sensor\+\_\+\+H\+U\+M\+\_\+\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sensor_8h_a1d6f7a4e7397d8b2d3a47b1c743cb33d}\label{sensor_8h_a1d6f7a4e7397d8b2d3a47b1c743cb33d}} 
+\index{sensor.h@{sensor.h}!Sensor\_Init@{Sensor\_Init}}
+\index{Sensor\_Init@{Sensor\_Init}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{Sensor\_Init()}{Sensor\_Init()}}
+{\footnotesize\ttfamily void Sensor\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+
+\begin{DoxyItemize}
+\item Global Functions. 
+\end{DoxyItemize}
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+\end{DoxyItemize}\mbox{\Hypertarget{sensor_8h_ac99a5f8a60048dc0fb2e3218ac4ed27f}\label{sensor_8h_ac99a5f8a60048dc0fb2e3218ac4ed27f}} 
+\index{sensor.h@{sensor.h}!Sensor\_TEMP\_Deinit@{Sensor\_TEMP\_Deinit}}
+\index{Sensor\_TEMP\_Deinit@{Sensor\_TEMP\_Deinit}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{Sensor\_TEMP\_Deinit()}{Sensor\_TEMP\_Deinit()}}
+{\footnotesize\ttfamily void Sensor\+\_\+\+T\+E\+M\+P\+\_\+\+Deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sensor_8h_a294f5cbdaacdbf9fde958c891f78daa7}\label{sensor_8h_a294f5cbdaacdbf9fde958c891f78daa7}} 
+\index{sensor.h@{sensor.h}!Sensor\_TEMP\_Read@{Sensor\_TEMP\_Read}}
+\index{Sensor\_TEMP\_Read@{Sensor\_TEMP\_Read}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{Sensor\_TEMP\_Read()}{Sensor\_TEMP\_Read()}}
+{\footnotesize\ttfamily float Sensor\+\_\+\+T\+E\+M\+P\+\_\+\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

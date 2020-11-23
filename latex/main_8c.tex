@@ -1,0 +1,167 @@
+\hypertarget{main_8c}{}\doxysection{src/main.c File Reference}
+\label{main_8c}\index{src/main.c@{src/main.c}}
+
+
+Default main function.  
+
+
+{\ttfamily \#include \char`\"{}configurations.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensor.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile char \mbox{\hyperlink{main_8c_ad829d81e10e647df847dcc07e1033b83}{line\+\_\+buffer\+\_\+\+Usart3}} \mbox{[}\mbox{\hyperlink{configurations_8h_a07597f3436525b621a17fcecf2c784af}{L\+I\+N\+E\+M\+AX}}+1\mbox{]}
+\item 
+volatile char \mbox{\hyperlink{main_8c_ae6a51e1e447fbd22acc9fec6a011c15a}{line\+\_\+buffer\+\_\+\+Usart2}} \mbox{[}\mbox{\hyperlink{configurations_8h_a07597f3436525b621a17fcecf2c784af}{L\+I\+N\+E\+M\+AX}}+1\mbox{]}
+\item 
+volatile int \mbox{\hyperlink{main_8c_a1b3d33be2ba66a44e5dd402835708209}{line\+\_\+valid}} = 0
+\item 
+uint8\+\_\+t \mbox{\hyperlink{main_8c_a7bef3d024d8387f41039ac89942ba68d}{received\+Byte}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{main_8c_a1cc545950661d96524585c500b3b68d1}{data}} \mbox{[}2\mbox{]} = \{0\}
+\item 
+volatile int \mbox{\hyperlink{main_8c_a9dadc7b6793cfc31c78a5871beaa9244}{i\+Counter100m\+Sec}} = 0
+\begin{DoxyCompactList}\small\item\em Extern Variables. \end{DoxyCompactList}\item 
+volatile int \mbox{\hyperlink{main_8c_a8a683c279ad6abb8a43d5fba906c153f}{i\+Counter30m\+Sec}} = 0
+\item 
+int \mbox{\hyperlink{main_8c_a2f22a739f4c9238fd26d8bdcdfbc78b4}{b\+Counter100m\+Sec}} = 0
+\item 
+int \mbox{\hyperlink{main_8c_aebab57866e799367ca9e8b713604ac49}{b\+Counter30m\+Sec}} = 0
+\item 
+int \mbox{\hyperlink{main_8c_a50481791c6caf477913bb390a0766c69}{b5\+Sec}} = 0
+\item 
+uint16\+\_\+t \mbox{\hyperlink{main_8c_a8d5786d506ec2868ce89baa60be1cb91}{i\+Sec\+Counter}} = 0
+\item 
+int \mbox{\hyperlink{main_8c_a436f8808294bfff172f7f600fb1c7c18}{b\+I2\+C\+\_\+\+E\+V\+E\+N\+T\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+B\+Y\+T\+E\+\_\+\+R\+E\+C\+E\+I\+V\+ED}} = \mbox{\hyperlink{configurations_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}
+\item 
+int \mbox{\hyperlink{main_8c_a9f20b0707b4ff30355f1c7acf5263091}{b\+I2\+C\+\_\+\+E\+V\+E\+N\+T\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+B\+Y\+T\+E\+\_\+\+T\+R\+A\+N\+S\+M\+I\+T\+T\+ED}} = \mbox{\hyperlink{configurations_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}
+\item 
+int \mbox{\hyperlink{main_8c_a7bd8aba9aa79e97400716cb87800d0f0}{b\+I2\+C\+\_\+\+E\+V\+E\+N\+T\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+T\+R\+A\+N\+S\+M\+I\+T\+T\+E\+R\+\_\+\+M\+O\+D\+E\+\_\+\+S\+E\+L\+E\+C\+T\+ED}} = \mbox{\hyperlink{configurations_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}
+\item 
+int \mbox{\hyperlink{main_8c_a693e45cbc1ea0651316458122d5d5181}{b\+I2\+C\+\_\+\+E\+V\+E\+N\+T\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+R\+E\+C\+E\+I\+V\+E\+R\+\_\+\+M\+O\+D\+E\+\_\+\+S\+E\+L\+E\+C\+T\+ED}} = \mbox{\hyperlink{configurations_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Default main function. 
+
+\begin{DoxyAuthor}{Author}
+Ac6 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+01-\/December-\/2013 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8c_a50481791c6caf477913bb390a0766c69}\label{main_8c_a50481791c6caf477913bb390a0766c69}} 
+\index{main.c@{main.c}!b5Sec@{b5Sec}}
+\index{b5Sec@{b5Sec}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{b5Sec}{b5Sec}}
+{\footnotesize\ttfamily int b5\+Sec = 0}
+
+\mbox{\Hypertarget{main_8c_a2f22a739f4c9238fd26d8bdcdfbc78b4}\label{main_8c_a2f22a739f4c9238fd26d8bdcdfbc78b4}} 
+\index{main.c@{main.c}!bCounter100mSec@{bCounter100mSec}}
+\index{bCounter100mSec@{bCounter100mSec}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{bCounter100mSec}{bCounter100mSec}}
+{\footnotesize\ttfamily int b\+Counter100m\+Sec = 0}
+
+\mbox{\Hypertarget{main_8c_aebab57866e799367ca9e8b713604ac49}\label{main_8c_aebab57866e799367ca9e8b713604ac49}} 
+\index{main.c@{main.c}!bCounter30mSec@{bCounter30mSec}}
+\index{bCounter30mSec@{bCounter30mSec}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{bCounter30mSec}{bCounter30mSec}}
+{\footnotesize\ttfamily int b\+Counter30m\+Sec = 0}
+
+\mbox{\Hypertarget{main_8c_a436f8808294bfff172f7f600fb1c7c18}\label{main_8c_a436f8808294bfff172f7f600fb1c7c18}} 
+\index{main.c@{main.c}!bI2C\_EVENT\_MASTER\_BYTE\_RECEIVED@{bI2C\_EVENT\_MASTER\_BYTE\_RECEIVED}}
+\index{bI2C\_EVENT\_MASTER\_BYTE\_RECEIVED@{bI2C\_EVENT\_MASTER\_BYTE\_RECEIVED}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{bI2C\_EVENT\_MASTER\_BYTE\_RECEIVED}{bI2C\_EVENT\_MASTER\_BYTE\_RECEIVED}}
+{\footnotesize\ttfamily int b\+I2\+C\+\_\+\+E\+V\+E\+N\+T\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+B\+Y\+T\+E\+\_\+\+R\+E\+C\+E\+I\+V\+ED = \mbox{\hyperlink{configurations_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}}
+
+\mbox{\Hypertarget{main_8c_a9f20b0707b4ff30355f1c7acf5263091}\label{main_8c_a9f20b0707b4ff30355f1c7acf5263091}} 
+\index{main.c@{main.c}!bI2C\_EVENT\_MASTER\_BYTE\_TRANSMITTED@{bI2C\_EVENT\_MASTER\_BYTE\_TRANSMITTED}}
+\index{bI2C\_EVENT\_MASTER\_BYTE\_TRANSMITTED@{bI2C\_EVENT\_MASTER\_BYTE\_TRANSMITTED}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{bI2C\_EVENT\_MASTER\_BYTE\_TRANSMITTED}{bI2C\_EVENT\_MASTER\_BYTE\_TRANSMITTED}}
+{\footnotesize\ttfamily int b\+I2\+C\+\_\+\+E\+V\+E\+N\+T\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+B\+Y\+T\+E\+\_\+\+T\+R\+A\+N\+S\+M\+I\+T\+T\+ED = \mbox{\hyperlink{configurations_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}}
+
+\mbox{\Hypertarget{main_8c_a693e45cbc1ea0651316458122d5d5181}\label{main_8c_a693e45cbc1ea0651316458122d5d5181}} 
+\index{main.c@{main.c}!bI2C\_EVENT\_MASTER\_RECEIVER\_MODE\_SELECTED@{bI2C\_EVENT\_MASTER\_RECEIVER\_MODE\_SELECTED}}
+\index{bI2C\_EVENT\_MASTER\_RECEIVER\_MODE\_SELECTED@{bI2C\_EVENT\_MASTER\_RECEIVER\_MODE\_SELECTED}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{bI2C\_EVENT\_MASTER\_RECEIVER\_MODE\_SELECTED}{bI2C\_EVENT\_MASTER\_RECEIVER\_MODE\_SELECTED}}
+{\footnotesize\ttfamily int b\+I2\+C\+\_\+\+E\+V\+E\+N\+T\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+R\+E\+C\+E\+I\+V\+E\+R\+\_\+\+M\+O\+D\+E\+\_\+\+S\+E\+L\+E\+C\+T\+ED = \mbox{\hyperlink{configurations_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}}
+
+\mbox{\Hypertarget{main_8c_a7bd8aba9aa79e97400716cb87800d0f0}\label{main_8c_a7bd8aba9aa79e97400716cb87800d0f0}} 
+\index{main.c@{main.c}!bI2C\_EVENT\_MASTER\_TRANSMITTER\_MODE\_SELECTED@{bI2C\_EVENT\_MASTER\_TRANSMITTER\_MODE\_SELECTED}}
+\index{bI2C\_EVENT\_MASTER\_TRANSMITTER\_MODE\_SELECTED@{bI2C\_EVENT\_MASTER\_TRANSMITTER\_MODE\_SELECTED}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{bI2C\_EVENT\_MASTER\_TRANSMITTER\_MODE\_SELECTED}{bI2C\_EVENT\_MASTER\_TRANSMITTER\_MODE\_SELECTED}}
+{\footnotesize\ttfamily int b\+I2\+C\+\_\+\+E\+V\+E\+N\+T\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+T\+R\+A\+N\+S\+M\+I\+T\+T\+E\+R\+\_\+\+M\+O\+D\+E\+\_\+\+S\+E\+L\+E\+C\+T\+ED = \mbox{\hyperlink{configurations_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}}
+
+\mbox{\Hypertarget{main_8c_a1cc545950661d96524585c500b3b68d1}\label{main_8c_a1cc545950661d96524585c500b3b68d1}} 
+\index{main.c@{main.c}!data@{data}}
+\index{data@{data}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily uint8\+\_\+t data\mbox{[}2\mbox{]} = \{0\}}
+
+\mbox{\Hypertarget{main_8c_a9dadc7b6793cfc31c78a5871beaa9244}\label{main_8c_a9dadc7b6793cfc31c78a5871beaa9244}} 
+\index{main.c@{main.c}!iCounter100mSec@{iCounter100mSec}}
+\index{iCounter100mSec@{iCounter100mSec}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{iCounter100mSec}{iCounter100mSec}}
+{\footnotesize\ttfamily volatile int i\+Counter100m\+Sec = 0}
+
+
+
+Extern Variables. 
+
+\mbox{\Hypertarget{main_8c_a8a683c279ad6abb8a43d5fba906c153f}\label{main_8c_a8a683c279ad6abb8a43d5fba906c153f}} 
+\index{main.c@{main.c}!iCounter30mSec@{iCounter30mSec}}
+\index{iCounter30mSec@{iCounter30mSec}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{iCounter30mSec}{iCounter30mSec}}
+{\footnotesize\ttfamily volatile int i\+Counter30m\+Sec = 0}
+
+\mbox{\Hypertarget{main_8c_a8d5786d506ec2868ce89baa60be1cb91}\label{main_8c_a8d5786d506ec2868ce89baa60be1cb91}} 
+\index{main.c@{main.c}!iSecCounter@{iSecCounter}}
+\index{iSecCounter@{iSecCounter}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{iSecCounter}{iSecCounter}}
+{\footnotesize\ttfamily uint16\+\_\+t i\+Sec\+Counter = 0}
+
+\mbox{\Hypertarget{main_8c_ae6a51e1e447fbd22acc9fec6a011c15a}\label{main_8c_ae6a51e1e447fbd22acc9fec6a011c15a}} 
+\index{main.c@{main.c}!line\_buffer\_Usart2@{line\_buffer\_Usart2}}
+\index{line\_buffer\_Usart2@{line\_buffer\_Usart2}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{line\_buffer\_Usart2}{line\_buffer\_Usart2}}
+{\footnotesize\ttfamily volatile char line\+\_\+buffer\+\_\+\+Usart2\mbox{[}\mbox{\hyperlink{configurations_8h_a07597f3436525b621a17fcecf2c784af}{L\+I\+N\+E\+M\+AX}}+1\mbox{]}}
+
+\mbox{\Hypertarget{main_8c_ad829d81e10e647df847dcc07e1033b83}\label{main_8c_ad829d81e10e647df847dcc07e1033b83}} 
+\index{main.c@{main.c}!line\_buffer\_Usart3@{line\_buffer\_Usart3}}
+\index{line\_buffer\_Usart3@{line\_buffer\_Usart3}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{line\_buffer\_Usart3}{line\_buffer\_Usart3}}
+{\footnotesize\ttfamily volatile char line\+\_\+buffer\+\_\+\+Usart3\mbox{[}\mbox{\hyperlink{configurations_8h_a07597f3436525b621a17fcecf2c784af}{L\+I\+N\+E\+M\+AX}}+1\mbox{]}}
+
+\mbox{\Hypertarget{main_8c_a1b3d33be2ba66a44e5dd402835708209}\label{main_8c_a1b3d33be2ba66a44e5dd402835708209}} 
+\index{main.c@{main.c}!line\_valid@{line\_valid}}
+\index{line\_valid@{line\_valid}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{line\_valid}{line\_valid}}
+{\footnotesize\ttfamily volatile int line\+\_\+valid = 0}
+
+\mbox{\Hypertarget{main_8c_a7bef3d024d8387f41039ac89942ba68d}\label{main_8c_a7bef3d024d8387f41039ac89942ba68d}} 
+\index{main.c@{main.c}!receivedByte@{receivedByte}}
+\index{receivedByte@{receivedByte}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{receivedByte}{receivedByte}}
+{\footnotesize\ttfamily uint8\+\_\+t received\+Byte}
+

@@ -1,0 +1,80 @@
+\hypertarget{system__stm32f10x_8c}{}\doxysection{src/system\+\_\+stm32f10x.c File Reference}
+\label{system__stm32f10x_8c}\index{src/system\_stm32f10x.c@{src/system\_stm32f10x.c}}
+
+
+C\+M\+S\+IS Cortex-\/\+M3 Device Peripheral Access Layer System Source File.  
+
+
+{\ttfamily \#include \char`\"{}stm32f10x.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___s_t_m32_f10x___system___private___defines_ga40e1495541cbb4acbe3f1819bd87a9fe}{V\+E\+C\+T\+\_\+\+T\+A\+B\+\_\+\+O\+F\+F\+S\+ET}}~0x0
+\item 
+\#define \mbox{\hyperlink{group___s_t_m32_f10x___system___private___defines_gaeed3dd9022f9d616e8b951cbc49a29bd}{P\+L\+L\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+H\+SI}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___s_t_m32_f10x___system___private___functions_ga93f514700ccf00d08dbdcff7f1224eb2}{System\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Setup the microcontroller system Initialize the Embedded Flash Interface, the P\+LL and update the System\+Core\+Clock variable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_t_m32_f10x___system___private___functions_gae0c36a9591fe6e9c45ecb21a794f0f0f}{System\+Core\+Clock\+Update}} (void)
+\begin{DoxyCompactList}\small\item\em Update System\+Core\+Clock variable according to Clock Register Values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___s_t_m32_f10x___system___private___defines_gaa3cd3e43291e81e795d642b79b6088e6}{System\+Core\+Clock}} = 72000000
+\item 
+\+\_\+\+\_\+I uint8\+\_\+t \mbox{\hyperlink{group___s_t_m32_f10x___system___private___defines_gacdc3ef54c0704c90e69a8a84fb2d970d}{A\+H\+B\+Presc\+Table}} \mbox{[}16\mbox{]} = \{0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+C\+M\+S\+IS Cortex-\/\+M3 Device Peripheral Access Layer System Source File. 
+
+\begin{DoxyAuthor}{Author}
+M\+CD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+V1.\+2.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+11-\/April-\/2014 \begin{DoxyVerb}     This file contains the system clock configuration for STM32F103 devices
+     and is customized for use with stm32f103_nucleo Kit. 
+     The STM32F103 is configured to run at 72 MHz, following the three  
+     configuration below:
+       - PLL_SOURCE_HSI   (default)     : HSI (~8MHz) used to clock the PLL, and
+                                          the PLL is used as system clock source,
+                                          64 MHz is maximum frequency on PLL HSI mode.
+       - PLL_SOURCE_HSE                 : HSE (8MHz) used to clock the PLL, and 
+                                          the PLL is used as system clock source.
+       - PLL_SOURCE_HSE_BYPASS          : HSE bypassed with an external clock 
+                                         (8MHz, coming from ST-Link) used to clock
+                                         the PLL, and the PLL is used as system
+                                         clock source.  
+\end{DoxyVerb}
+
+\end{DoxyDate}
+
+\begin{DoxyEnumerate}
+\item This file provides two functions and one global variable to be called from user application\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{group___s_t_m32_f10x___system___private___functions_ga93f514700ccf00d08dbdcff7f1224eb2}{System\+Init()}}\+: Setups the system clock (System clock source, P\+LL Multiplier factors, A\+H\+B/\+A\+P\+Bx prescalers and Flash settings). This function is called at startup just after reset and before branch to main program. This call is made inside the \char`\"{}startup\+\_\+stm32f10x\+\_\+xx.\+s\char`\"{} file.
+\item System\+Core\+Clock variable\+: Contains the core clock (H\+C\+LK), it can be used by the user application to setup the Sys\+Tick timer or configure other parameters.
+\item \mbox{\hyperlink{group___s_t_m32_f10x___system___private___functions_gae0c36a9591fe6e9c45ecb21a794f0f0f}{System\+Core\+Clock\+Update()}}\+: Updates the variable System\+Core\+Clock and must be called whenever the core clock is changed during program execution.
+\end{DoxyItemize}
+\item After each device reset the H\+SI (8 M\+Hz) is used as system clock source. Then \mbox{\hyperlink{group___s_t_m32_f10x___system___private___functions_ga93f514700ccf00d08dbdcff7f1224eb2}{System\+Init()}} function is called, in \char`\"{}startup\+\_\+stm32f10x\+\_\+xx.\+s\char`\"{} file, to configure the system clock before to branch to main program.
+\item If the system clock source selected by user fails to startup, the \mbox{\hyperlink{group___s_t_m32_f10x___system___private___functions_ga93f514700ccf00d08dbdcff7f1224eb2}{System\+Init()}} function will do nothing and H\+SI still used as system clock source. User can add some code to deal with this issue inside the Set\+Sys\+Clock() function.
+\item The default value of H\+SE crystal is set to 8 M\+Hz. When H\+SE is used as system clock source, directly or through P\+LL, and you are using different crystal you have to adapt the H\+SE value to your own configuration.
+\end{DoxyEnumerate}
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} C\+O\+P\+Y\+R\+I\+G\+HT 2014 S\+T\+Microelectronics\end{center} }
+
+Licensed under M\+C\+D-\/\+ST Liberty SW License Agreement V2, (the \char`\"{}\+License\char`\"{}); You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: \begin{DoxyVerb}   http://www.st.com/software_license_agreement_liberty_v2
+\end{DoxyVerb}
+
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \char`\"{}\+A\+S I\+S\char`\"{} B\+A\+S\+IS, W\+I\+T\+H\+O\+UT W\+A\+R\+R\+A\+N\+T\+I\+ES OR C\+O\+N\+D\+I\+T\+I\+O\+NS OF A\+NY K\+I\+ND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 
