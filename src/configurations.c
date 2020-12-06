@@ -9,6 +9,12 @@
 
 
 /**
+ * TypeDef Declarations
+ */
+typedef enum { false, true } bool;
+
+
+/**
  *  Static functions Declarations
  */
 static void RCC_Config_HSE_PLL_Max(void);
